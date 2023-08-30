@@ -1,7 +1,8 @@
-# Dimensionality Reduction
+# Feature Transformation
 
-Repo contains simple implementations of some common dimensionality reduction techniques:
+Repo contains simple implementations of some common feature transformation techniques:
 - Principal Component Analysis (PCA)
+- Independent Component Analysis (ICA)
 
 ### Examples
 
