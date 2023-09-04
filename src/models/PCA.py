@@ -42,20 +42,20 @@ class PCA:
 
         if self.preprocess == "standardize":
             self.X_std = X.std(axis=0)
-            X_standardized = self._standardize(X)
+            X = self._standardize(X)
         elif self.preprocess == "center":
-            X_standardized = self._center(X)
+            X = self._center(X)
 
         # NOTE: compute using the covariance matrix
-        # covariance_matrix = np.cov(X_standardized.T)
+        # covariance_matrix = np.cov(X.T)
         # eigenvalues, eigenvectors = np.linalg.eig(covariance_matrix)
         # self.eigenvectors = eigenvectors
         # self.components = eigenvectors[:, :self.n_components].T
         # self.explained_variance_ratio = eigenvalues / eigenvalues.sum()
 
         # NOTE: compute using the singular value decomposition
-        U, s, eigenvectors = np.linalg.svd(X_standardized, full_matrices=False)
-        self.eigenvalues = (s**2) / (X_standardized.shape[0] - 1)
+        U, s, eigenvectors = np.linalg.svd(X, full_matrices=False)
+        self.eigenvalues = (s**2) / (X.shape[0] - 1)
 
         self.diag = s
         self.unitary_matrix = U
