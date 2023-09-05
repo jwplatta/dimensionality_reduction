@@ -1,5 +1,6 @@
-import matplotlib.pyplot as plt
 import os
+import time
+import matplotlib.pyplot as plt
 
 class LoadingScreePlots:
     def __init__(
@@ -39,7 +40,8 @@ class LoadingScreePlots:
             directory (str): directory to save the file
         """
         if not filename:
-            filename = "loading_scree_plots.png"
+            ts = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime())
+            filename = f"loading_scree_plots_{ts}.png"
 
         try:
             self._build(figsize, scree_scale)
