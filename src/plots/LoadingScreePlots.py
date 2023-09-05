@@ -9,8 +9,7 @@ class LoadingScreePlots:
       y,
       labels,
       components,
-      explained_variance,
-      explained_variance_ratio
+      explained_variance
     ):
         """
         Args:
@@ -19,15 +18,15 @@ class LoadingScreePlots:
             labels (list): list of labels
             components (np.ndarray): components
             explained_variance (np.ndarray): explained variance
-            explained_variance_ratio (np.ndarray): explained variance ratio
         """
         self.X = X # NOTE: only uses the first two features
         self.y = y
         self.labels = labels
 
+        assert len(components) == len(explained_variance)
         self.components = components
         self.explained_variance = explained_variance
-        self.explained_variance_ratio = explained_variance_ratio
+
         self.fig = None
 
 
