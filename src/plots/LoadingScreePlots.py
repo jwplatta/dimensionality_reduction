@@ -44,14 +44,14 @@ class LoadingScreePlots:
             filename = f"loading_scree_plots_{ts}.png"
 
         try:
+            filepath = os.path.join(directory, filename)
             self._build(figsize, scree_scale)
             self.fig.savefig(
-              os.path.join(directory, filename),
-              bbox_inches='tight',
-              dpi=600
+              filepath,
+              bbox_inches='tight'
             )
 
-            return filename
+            return filepath
         except Exception as e:
             print(f"Error saving file: {e}")
             return False
@@ -89,9 +89,9 @@ class LoadingScreePlots:
 
         # NOTE: use the first two components
         for i, (comp, var) in enumerate(zip(
-            self.components, self.explained_variance_ratio)):
+            self.components, self.explained_variance)):
             # NOTE: scale component by its variance explanation power
-            comp = comp * var * scale
+            comp = comp * var
             axs.plot(
                 [0, comp[0]],
                 [0, comp[1]],
