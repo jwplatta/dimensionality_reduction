@@ -63,7 +63,6 @@ for ft1_idx in range(0, 9):
                 [0, 1],
                 pca.components,
                 pca.eigenvalues[:n_components],
-                pca.explained_variance_ratio[:n_components]
             )
             filepath = plots.save(
               filename=f"loading_scree_plots_ft{ft1_idx}_ft{ft2_idx}.png",
